@@ -1,0 +1,333 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define theme variables */
+:root {
+  /* Light theme colors */
+  --light-bg-primary: #f5f8fa;
+  --light-bg-secondary: #e1e8ed;
+  --light-bg-tertiary: #d1d9e0;
+  --light-text-primary: #14171a;
+  --light-text-secondary: #657786;
+  --light-border-color: #cfd9de;
+  --light-red-primary: #e0245e;
+  --light-red-secondary: #f3a9bc;
+  --light-blue-primary: #1da1f2;
+  --light-blue-secondary: #c8e4f9;
+  --light-shadow-color: rgba(0, 0, 0, 0.1);
+  --light-success-color: #4caf50;
+  --light-danger-color: #e0245e;
+  
+  /* Dark theme colors */
+  --dark-bg-primary: #0d1117;
+  --dark-bg-secondary: #161b22;
+  --dark-bg-tertiary: #21262d;
+  --dark-text-primary: #e6edf3;
+  --dark-text-secondary: #8b949e;
+  --dark-border-color: #30363d;
+  --dark-red-primary: #ff6b6b;
+  --dark-red-secondary: #772c2c;
+  --dark-blue-primary: #58a6ff;
+  --dark-blue-secondary: #1c416e;
+  --dark-shadow-color: rgba(0, 0, 0, 0.3);
+  --dark-success-color: #238636;
+  --dark-danger-color: #da3633;
+}
+
+/* Apply theme variables */
+.theme-dark {
+  --bg-primary: var(--dark-bg-primary);
+  --bg-secondary: var(--dark-bg-secondary);
+  --bg-tertiary: var(--dark-bg-tertiary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-color: var(--dark-border-color);
+  --red-primary: var(--dark-red-primary);
+  --red-secondary: var(--dark-red-secondary);
+  --blue-primary: var(--dark-blue-primary);
+  --blue-secondary: var(--dark-blue-secondary);
+  --shadow-color: var(--dark-shadow-color);
+  --success-color: var(--dark-success-color);
+  --danger-color: var(--dark-danger-color);
+}
+
+.theme-light {
+  --bg-primary: var(--light-bg-primary);
+  --bg-secondary: var(--light-bg-secondary);
+  --bg-tertiary: var(--light-bg-tertiary);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-color: var(--light-border-color);
+  --red-primary: var(--light-red-primary);
+  --red-secondary: var(--light-red-secondary);
+  --blue-primary: var(--light-blue-primary);
+  --blue-secondary: var(--light-blue-secondary);
+  --shadow-color: var(--light-shadow-color);
+  --success-color: var(--light-success-color);
+  --danger-color: var(--light-danger-color);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.app-header {
+  padding: 16px 24px;
+  background: linear-gradient(to right, var(--bg-secondary), var(--bg-tertiary));
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  position: relative;
+  z-index: 10;
+}
+
+.app-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red-primary), var(--blue-primary));
+  opacity: 0.8;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 2px 4px var(--shadow-color));
+  animation: pulse 2s infinite;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(90deg, var(--red-primary), var(--blue-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  border-color: var(--text-secondary);
+}
+
+.theme-toggle:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px var(--shadow-color);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Old App.css content for reference */
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.terminal-outer-container {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Smooth animation for the indicators */
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+/* Gradient text animations */
+.text-transparent.bg-gradient-to-r {
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Improving scrollbar appearance for all components */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  margin-left: 16px;
+  text-transform: capitalize;
+}
+
+.connection-status .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--danger-color);
+}
+
+.connection-status.connected .status-dot {
+  background-color: var(--success-color);
+  box-shadow: 0 0 8px var(--success-color);
+  animation: pulse 2s infinite;
+}
+
+.connection-status .status-text {
+  color: var(--text-secondary);
+}
+
+.connection-status.connected .status-text {
+  color: var(--success-color);
+}
+
+.connection-status.disconnected .status-text {
+  color: var(--danger-color);
+}

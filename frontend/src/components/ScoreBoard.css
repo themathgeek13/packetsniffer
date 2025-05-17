@@ -1,0 +1,37 @@
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  color: white;
+}
+
+.score.red {
+  background: linear-gradient(to right, #7f1d1d, #991b1b);
+}
+
+.score.blue {
+  background: linear-gradient(to right, #1e3a8a, #1e40af);
+}
+
+.score h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.points {
+  font-size: 2rem;
+  font-weight: bold;
+} 
